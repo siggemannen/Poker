@@ -1,6 +1,5 @@
 package com.sigge.model;
 
-import java.util.List;
 
 /**
  * Represents a poker table with all of it's glory...
@@ -14,7 +13,19 @@ public interface ITable
 	 * @param players list of players to setup
 	 * @param dealer the index of dealing player
 	 */
-	public void setupTable(List<IPlayer> players, int dealer);
+	public void setupTable(int maxPlayers);
+	
+	/**
+	 * Return number of players
+	 * @return
+	 */
+	public int getMaxPlayers();
+	
+	/**
+	 * Return registered players
+	 * @return
+	 */
+	public IPlayer[] getPlayers();
 	
 	/**
 	 * Creates a new game from existing players
@@ -27,4 +38,10 @@ public interface ITable
 	 * @return
 	 */
 	public int getDealer();
+	
+	public void join (IPlayer player) throws NoSeatsAvailable, SeatTaken;
+	
+	public void join (IPlayer player, int seat) throws SeatTaken, NoSeatsAvailable;
+	
+	public int getHowManyPlayersAreIn();
 }
